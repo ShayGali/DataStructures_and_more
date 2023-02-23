@@ -2,7 +2,7 @@ package sorting_algorithms;
 
 
 import java.lang.reflect.Array;
-import java.util.*;
+import java.util.Arrays;
 
 /**
  * @see <a href="https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html">visuals the algorithem</a>
