@@ -5,9 +5,9 @@ import java.util.NoSuchElementException;
 
 public class CircleArrayList<T> implements List<T> {
 
-    Object[] arr;
-    int size;
-    int start;
+    protected Object[] arr;
+    protected int size;
+    protected int start;
 
     public CircleArrayList(int maxSize) {
         this.arr = new Object[maxSize];
@@ -21,7 +21,7 @@ public class CircleArrayList<T> implements List<T> {
 
     @Override
     public boolean isEmpty() {
-        return size == arr.length;
+        return size == 0;
     }
 
     protected int decrementIndex(int index) {
@@ -151,7 +151,6 @@ public class CircleArrayList<T> implements List<T> {
 
     @Override
     public T deleteLast() {
-        checkIndex(size - 1);
         if (size == 0)
             throw new NoSuchElementException("There are not element in the array");
 
@@ -168,11 +167,12 @@ public class CircleArrayList<T> implements List<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public T[] asArray(Class<T> objectClassType) {
         T[] res = (T[]) Array.newInstance(objectClassType, size);
-        int startToEndLength = Math.min(start + size, arr.length - start);
-        System.arraycopy(arr, start, res, 0, startToEndLength);
-        System.arraycopy(arr, 0, res, startToEndLength, size - startToEndLength);
+        for (int i = 0; i < size; i++) {
+            res[i] = (T) arr[getIndex(i)];
+        }
         return res;
     }
 

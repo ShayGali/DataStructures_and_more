@@ -24,6 +24,7 @@ public interface List<T> {
     int indexOf(T element);
 
     boolean isEmpty();
+
     T[] asArray(Class<T> objectClassType);
 
     default void checkIndex(int index) {
