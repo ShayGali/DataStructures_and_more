@@ -1,5 +1,7 @@
 package data_structures.array_and_linked_lists;
 
+import java.util.NoSuchElementException;
+
 public interface List<T> {
     T get(int index);
 
@@ -30,6 +32,11 @@ public interface List<T> {
     default void checkIndex(int index) {
         if (index < 0 || index >= size())
             throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size());
+    }
+
+    default void throwIfTheIsEmpty() {
+        if (isEmpty())
+            throw new NoSuchElementException("List is empty");
     }
 
 

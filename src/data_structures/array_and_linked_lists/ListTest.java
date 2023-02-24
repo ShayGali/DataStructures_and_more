@@ -13,7 +13,8 @@ class ListTest {
     private static Stream<List<Integer>> listTestClasses() {
         return Stream.of(
                 new CircleArrayList<>(20),
-                new SinglyLinkedList<>()
+                new SinglyLinkedList<>(),
+                new CircularDoublyLinkedLists<>()
         );
     }
 
