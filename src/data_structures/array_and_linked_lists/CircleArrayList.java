@@ -39,6 +39,7 @@ public class CircleArrayList<T> implements List<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public T get(int index) {
         checkIndex(index);
         return (T) arr[getIndex(index)];
@@ -78,6 +79,7 @@ public class CircleArrayList<T> implements List<T> {
         if (index == 0) return deleteFirst();
         if (index == size() - 1) return deleteLast();
 
+        @SuppressWarnings("unchecked")
         T data = (T) arr[getIndex(index)];
         size--;
         if (index < size - index) {
@@ -100,6 +102,7 @@ public class CircleArrayList<T> implements List<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public T getFirst() {
         if (size == 0)
             throw new NoSuchElementException("There are not element in the array");
@@ -125,7 +128,7 @@ public class CircleArrayList<T> implements List<T> {
     public T deleteFirst() {
         if (size == 0)
             throw new NoSuchElementException("There are not element in the array");
-
+        @SuppressWarnings("unchecked")
         T data = (T) arr[getIndex(0)];
         size--;
         if (size == 0)
@@ -136,6 +139,7 @@ public class CircleArrayList<T> implements List<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public T getLast() {
         if (size == 0)
             throw new NoSuchElementException("There are not element in the array");
@@ -150,10 +154,10 @@ public class CircleArrayList<T> implements List<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public T deleteLast() {
         if (size == 0)
             throw new NoSuchElementException("There are not element in the array");
-
         return (T) arr[getIndex(--size)];
     }
 
