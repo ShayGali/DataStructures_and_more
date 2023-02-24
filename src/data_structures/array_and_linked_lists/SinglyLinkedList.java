@@ -6,7 +6,7 @@ import lombok.Data;
 import java.lang.reflect.Array;
 import java.util.NoSuchElementException;
 
-public class LinkedList<T> implements List<T> {
+public class SinglyLinkedList<T> implements List<T> {
 
     private Node<T> first;
     private Node<T> last;
