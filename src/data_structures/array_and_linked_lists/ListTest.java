@@ -12,7 +12,8 @@ class ListTest {
 
     private static Stream<List<Integer>> listTestClasses() {
         return Stream.of(
-                new CircleArrayList<>(20),
+                new CircleArray<>(20),
+                new CircleArrayList<>(5),
                 new SinglyLinkedList<>(),
                 new CircularDoublyLinkedLists<>()
         );
