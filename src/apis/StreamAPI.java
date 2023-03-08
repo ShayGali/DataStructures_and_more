@@ -69,6 +69,7 @@ public class StreamAPI {
 
     static void convertStreamToDS() {
         Stream<Book> bookStream = Book.getBookStream();
+
         Object[] objectArray = bookStream.toArray();
 
         Stream<Book> bookStream2 = Book.getBookStream();
