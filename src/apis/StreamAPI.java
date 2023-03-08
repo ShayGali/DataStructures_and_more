@@ -145,7 +145,7 @@ public class StreamAPI {
         Stream<Book> bookStream3 = Book.getBookStream();
         Stream<Book> bookStream4 = Book.getBookStream();
 
-        List<Book> bookList = bookStream.collect(Collectors.toList());
+        List<Book> bookList = bookStream.toList();
         Set<Book> bookSet = bookStream2.collect(Collectors.toSet());
         Vector<Book> bookVector = bookStream3.collect(Collectors.toCollection(Vector::new));
         LinkedList<Book> bookLinkedList = bookStream4.collect(Collectors.toCollection(LinkedList::new));
@@ -171,7 +171,7 @@ public class StreamAPI {
         List<Double> TenRandNum =
                 Stream.generate(Math::random)
                         .limit(10)
-                        .collect(Collectors.toList());
+                        .toList();
 
         // print "wow" 3 times
         Stream.generate(() -> "wow")
@@ -183,7 +183,7 @@ public class StreamAPI {
         List<Integer> intFrom0To9 =
                 Stream.iterate(0, n -> n + 1)
                         .limit(10)
-                        .collect(Collectors.toList());
+                        .toList();
 
 
         // print the 10 first powers of 2
@@ -201,7 +201,7 @@ public class StreamAPI {
     }
 
     static void sorted() {
-        List<Integer> sortedInts = Stream.of(25, 15, 75, 35, 40, 5, 65).sorted().collect(Collectors.toList());
+        List<Integer> sortedInts = Stream.of(25, 15, 75, 35, 40, 5, 65).sorted().toList();
 
         //sort by object data fields
         Stream<Book> bookStream = Book.getBookStream();
@@ -210,27 +210,27 @@ public class StreamAPI {
     }
 
     static void filter() {
-        List<Integer> filteredList = Stream.of(25, 15, 75, 35, 40, 5, 65).filter(el -> el < 30).collect(Collectors.toList());
+        List<Integer> filteredList = Stream.of(25, 15, 75, 35, 40, 5, 65).filter(el -> el < 30).toList();
     }
 
     static void map() {
         List<Integer> listTimes10 =
                 Stream.of(25, 15, 75, 35, 40, 5, 65)
-                        .map(n -> n * 10).collect(Collectors.toList());
+                        .map(n -> n * 10).toList();
 
         Stream<Book> bookStream = Book.getBookStream();
-        List<String> titles = bookStream.map(Book::title).collect(Collectors.toList());
+        List<String> titles = bookStream.map(Book::title).toList();
     }
 
     // כדי לעשות כמה דברים עם אותו stream
     static void peek() {
         Stream<Book> bookStream1 = Book.getBookStream();
-        List<Book> printAndCollect = bookStream1.peek(System.out::println).collect(Collectors.toList());
+        List<Book> printAndCollect = bookStream1.peek(System.out::println).toList();
 
         List<Person> people =
                 Person.getPersonStream()
                         .peek(person -> person.setAge(person.getAge() + 1))
-                        .collect(Collectors.toList());
+                        .toList();
         System.out.println(people);
     }
 
@@ -242,7 +242,7 @@ public class StreamAPI {
         List<Integer> mergeList =
                 nestedList.stream()
                         .flatMap(Collection::stream)
-                        .collect(Collectors.toList());
+                        .toList();
     }
 
 
@@ -317,14 +317,14 @@ public class StreamAPI {
         // act like filter
         // take all the elements until when the condition is false
         // [25, 15]
-        List<Integer> takeWhile = stream1.takeWhile(n -> n < 30).collect(Collectors.toList());
+        List<Integer> takeWhile = stream1.takeWhile(n -> n < 30).toList();
 
         // drop all the elements until when the condition is false
         // [75, 35, 40, 5, 10, 55, 60, 80]
-        List<Integer> dropWhile = stream2.dropWhile(n -> n < 30).collect(Collectors.toList());
+        List<Integer> dropWhile = stream2.dropWhile(n -> n < 30).toList();
 
         //[25, 15, 5, 10]
-        List<Integer> filterList = stream3.filter(n -> n < 30).collect(Collectors.toList());
+        List<Integer> filterList = stream3.filter(n -> n < 30).toList();
     }
 
     static void parallel() {
